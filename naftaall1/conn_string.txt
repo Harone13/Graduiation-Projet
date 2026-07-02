@@ -1,0 +1,8 @@
+    <add name="Model1" connectionString="data source=WIN-39V443QMVE2;initial catalog=naftall1;persist security info=True;user id=testUser;encrypt=True;trustservercertificate=True;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />
+    <add name="naftall1Entities" connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=WIN-39V443QMVE2;initial catalog=naftall1;persist security info=True;user id=testUser;password=Taiboxing34!;encrypt=True;trustservercertificate=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+    <add name="naftall1Entities1" connectionString="metadata=res://*/Local_DB.naftall1.csdl|res://*/Local_DB.naftall1.ssdl|res://*/Local_DB.naftall1.msl;
+provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-5ME7MPL\SQLEXPRESS;initial catalog=naftall1;integrated security=True;encrypt=True;
+trustservercertificate=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+
+
+Server=DESKTOP-5ME7MPL\SQLEXPRESS;Database=naftall1;User Id=naftall1;Password=naftall1;

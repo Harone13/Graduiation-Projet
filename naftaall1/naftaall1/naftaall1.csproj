@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EA809E8A-84C7-434B-B0A2-277202D5DEA7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>naftaall1</RootNamespace>
+    <AssemblyName>naftaall1</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=9.0.0.4, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.9.0.4\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="client_part\addOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="client_part\addOrder.Designer.cs">
+      <DependentUpon>addOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="client_part\addUpClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="client_part\addUpClient.Designer.cs">
+      <DependentUpon>addUpClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="client_part\client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="client_part\client.Designer.cs">
+      <DependentUpon>client.cs</DependentUpon>
+    </Compile>
+    <Compile Include="client_part\comDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="client_part\comDetailForm.Designer.cs">
+      <DependentUpon>comDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="client_part\EncaissDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="client_part\EncaissDetailForm.Designer.cs">
+      <DependentUpon>EncaissDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="client_part\Encaissement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="client_part\Encaissement.Designer.cs">
+      <DependentUpon>Encaissement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="client_part\orderListFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="client_part\orderListFrm.Designer.cs">
+      <DependentUpon>orderListFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="client_part\orderListFrm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="client_part\orderListFrm1.Designer.cs">
+      <DependentUpon>orderListFrm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="client_part\personInfos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="client_part\personInfos.Designer.cs">
+      <DependentUpon>personInfos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Local_DB\bon_enlev.cs">
+      <DependentUpon>naftall1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Local_DB\bon_liv.cs">
+      <DependentUpon>naftall1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Local_DB\chaufeur.cs">
+      <DependentUpon>naftall1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Local_DB\client.cs">
+      <DependentUpon>naftall1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Local_DB\commandes.cs">
+      <DependentUpon>naftall1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Local_DB\la_charge.cs">
+      <DependentUpon>naftall1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Local_DB\naftall1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>naftall1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Local_DB\naftall1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>naftall1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Local_DB\naftall1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>naftall1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Local_DB\person.cs">
+      <DependentUpon>naftall1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Local_DB\produit.cs">
+      <DependentUpon>naftall1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Local_DB\transporteur.cs">
+      <DependentUpon>naftall1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Local_DB\utilisateur.cs">
+      <DependentUpon>naftall1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Local_DB\vehicule.cs">
+      <DependentUpon>naftall1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mainForm.Designer.cs">
+      <DependentUpon>mainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\AddBon_EnlevFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\AddBon_EnlevFrm.Designer.cs">
+      <DependentUpon>AddBon_EnlevFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\addUpChaufTrans.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\addUpChaufTrans.Designer.cs">
+      <DependentUpon>addUpChaufTrans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\addUpProd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\addUpProd.Designer.cs">
+      <DependentUpon>addUpProd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\addUpTransprter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\addUpTransprter.Designer.cs">
+      <DependentUpon>addUpTransprter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\AddUpVeh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\AddUpVeh.Designer.cs">
+      <DependentUpon>AddUpVeh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\listOfTansprtFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\listOfTansprtFrm.Designer.cs">
+      <DependentUpon>listOfTansprtFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\listOfTransporters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\listOfTransporters.Designer.cs">
+      <DependentUpon>listOfTransporters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\prodInfos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\prodInfos.Designer.cs">
+      <DependentUpon>prodInfos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\produitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\produitForm.Designer.cs">
+      <DependentUpon>produitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\tansportFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prod_trnsprt_part\tansportFrm.Designer.cs">
+      <DependentUpon>tansportFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="system_mngmt_part\addUpUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="system_mngmt_part\addUpUserForm.Designer.cs">
+      <DependentUpon>addUpUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="system_mngmt_part\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="system_mngmt_part\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="client_part\addOrder.resx">
+      <DependentUpon>addOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="client_part\addUpClient.resx">
+      <DependentUpon>addUpClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="client_part\client.resx">
+      <DependentUpon>client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="client_part\comDetailForm.resx">
+      <DependentUpon>comDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="client_part\EncaissDetailForm.resx">
+      <DependentUpon>EncaissDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="client_part\Encaissement.resx">
+      <DependentUpon>Encaissement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="client_part\orderListFrm.resx">
+      <DependentUpon>orderListFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="client_part\orderListFrm1.resx">
+      <DependentUpon>orderListFrm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="client_part\personInfos.resx">
+      <DependentUpon>personInfos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mainForm.resx">
+      <DependentUpon>mainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prod_trnsprt_part\AddBon_EnlevFrm.resx">
+      <DependentUpon>AddBon_EnlevFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prod_trnsprt_part\addUpChaufTrans.resx">
+      <DependentUpon>addUpChaufTrans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prod_trnsprt_part\addUpProd.resx">
+      <DependentUpon>addUpProd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prod_trnsprt_part\addUpTransprter.resx">
+      <DependentUpon>addUpTransprter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prod_trnsprt_part\AddUpVeh.resx">
+      <DependentUpon>AddUpVeh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prod_trnsprt_part\listOfTansprtFrm.resx">
+      <DependentUpon>listOfTansprtFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prod_trnsprt_part\listOfTransporters.resx">
+      <DependentUpon>listOfTransporters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prod_trnsprt_part\prodInfos.resx">
+      <DependentUpon>prodInfos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prod_trnsprt_part\produitForm.resx">
+      <DependentUpon>produitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prod_trnsprt_part\tansportFrm.resx">
+      <DependentUpon>tansportFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="system_mngmt_part\addUpUserForm.resx">
+      <DependentUpon>addUpUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="system_mngmt_part\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Local_DB\naftall1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>naftall1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Local_DB\naftall1.edmx.diagram">
+      <DependentUpon>naftall1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Local_DB\naftall1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>naftall1.edmx</DependentUpon>
+      <LastGenOutput>naftall1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Local_DB\naftall1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>naftall1.edmx</DependentUpon>
+      <LastGenOutput>naftall1.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\icons8-change-481.png" />
+    <None Include="Resources\icons8-change-48.png" />
+    <None Include="Resources\icons8-print-48.png" />
+    <None Include="Resources\cogwheel.png" />
+    <None Include="Resources\coins %281%29.png" />
+    <None Include="Resources\42568fuelpump_98960.png" />
+    <None Include="Resources\accept_document %281%29.png" />
+    <None Include="Resources\Saki-Snowish-Trash-full.32.png" />
+    <None Include="Resources\accept_document.png" />
+    <None Include="Resources\Graphicloads-Flat-Finance-Certificate.48.png" />
+    <None Include="Resources\coins %282%29.png" />
+    <None Include="Resources\Microsoft-Fluentui-Emoji-Flat-Identification-Card-Flat.16.png" />
+    <None Include="Resources\Iconshock-Real-Vista-Communications-Phone.16.png" />
+    <None Include="Resources\Mazenl77-NX11-Internet-Real.16.png" />
+    <None Include="Resources\user_id.png" />
+    <None Include="Resources\user %281%29.png" />
+    <None Include="Resources\user_add.png" />
+    <None Include="Resources\Iconshock-Super-Vista-Accounting-Cabinet.48.png" />
+    <None Include="Resources\Saki-NuoveXT-2-Actions-stop.32.png" />
+    <None Include="Resources\Oxygen-Icons.org-Oxygen-Actions-user-properties.24.png" />
+    <None Include="Resources\eye.png" />
+    <None Include="Resources\key %282%29.png" />
+    <None Include="Resources\login %281%29.png" />
+    <None Include="Resources\key %281%29.png" />
+    <None Include="Resources\login.png" />
+    <None Include="Resources\order %282%29.png" />
+    <None Include="Resources\order %281%29.png" />
+    <None Include="Resources\forklift_truck.png" />
+    <None Include="Resources\istockphoto-473532592-170667a1.jpg" />
+    <None Include="Resources\tank_truck.png" />
+    <None Include="Resources\administrator %281%29.png" />
+    <None Include="Resources\driver %281%29.png" />
+    <None Include="Resources\naftal-seeklogo.png" />
+    <None Include="Resources\administrator.png" />
+    <None Include="Resources\driver.png" />
+    <None Include="Resources\man-truck-with-fuel-tank-01.jpg" />
+    <None Include="Resources\illustration-industrie-du-gaz-petrole-transport-marchandises-dessin-anime-camion-citerne-voiture-transportant-icone-petrole-blanc_169479-663.jpg" />
+    <None Include="Resources\png-clipart-commercial-vehicle-cargo-truck-machine-tank-truck-freight-transport-truck.png" />
+    <None Include="Resources\ddwdshl3.png" />
+    <None Include="Resources\l7mg2mqd.png" />
+    <None Include="Resources\carburant-essence-camion-icone-vecteur-illustration-television-simple-symbole-noir-sur-fond-blanc-camion-de-carburant-essence-modele-de-conception-de-panneau-pour-le-web-et-mobi-w36r441.jpg" />
+    <None Include="Resources\carburant-essence-camion-icone-vecteur-illustration-television-simple-symbole-noir-sur-fond-blanc-camion-de-carburant-essence-modele-de-conception-de-panneau-pour-le-web-et-mobi-w36r44.jpg" />
+    <None Include="Resources\istockphoto-473532592-170667a.jpg" />
+    <None Include="Resources\previous.png" />
+    <None Include="Resources\next.png" />
+    <None Include="Resources\OIP.jfif" />
+    <None Include="Resources\Franksouza183-Fs-Actions-stock-save-as.32.png" />
+    <None Include="Resources\Dryicons-Simplistica-Add.24.png" />
+    <None Include="Resources\Dryicons-Simplistica-Add.32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

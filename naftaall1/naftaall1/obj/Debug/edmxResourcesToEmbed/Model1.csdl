@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="naftall1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="person_id" Type="Int32" />
+    <Property Name="registre" Type="Int32" />
+    <NavigationProperty Name="person" Relationship="Self.FK_client_person" FromRole="client" ToRole="person" />
+  </EntityType>
+  <EntityType Name="person1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="adresse" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="date_ajoute" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="client" Relationship="Self.FK_client_person" FromRole="person" ToRole="client" />
+  </EntityType>
+  <Association Name="FK_client_person">
+    <End Role="person" Type="naftall1Model.person1" Multiplicity="0..1" />
+    <End Role="client" Type="Self.client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="client">
+        <PropertyRef Name="person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="naftall1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="client" EntityType="Self.client" />
+    <EntitySet Name="person" EntityType="naftall1Model.person1" />
+    <AssociationSet Name="FK_client_person" Association="Self.FK_client_person">
+      <End Role="person" EntitySet="person" />
+      <End Role="client" EntitySet="client" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

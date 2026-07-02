@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="naftall1Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="person_id" Type="Int32" />
+    <Property Name="registre" Type="Int32" />
+    <NavigationProperty Name="person" Relationship="Self.FK_client_person" FromRole="client" ToRole="person" />
+    <NavigationProperty Name="commandes" Relationship="Self.FK_commandes_client" FromRole="client" ToRole="commandes" />
+  </EntityType>
+  <EntityType Name="commandes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="client" Type="Int32" Nullable="false" />
+    <Property Name="produit" Type="Int32" Nullable="false" />
+    <Property Name="bon_liv" Type="Int32" Nullable="false" />
+    <Property Name="prod_qnt" Type="Int32" Nullable="false" />
+    <Property Name="emb" Type="Int32" />
+    <NavigationProperty Name="client1" Relationship="Self.FK_commandes_client" FromRole="commandes" ToRole="client" />
+    <NavigationProperty Name="produit1" Relationship="Self.FK_commandes_produit" FromRole="commandes" ToRole="produit" />
+    <Property Name="montant_ligne" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="bon_liv1" Relationship="naftall1Model1.FK_commandes_bon_liv" FromRole="commandes" ToRole="bon_liv" />
+  </EntityType>
+  <EntityType Name="person">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="adresse" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="date_ajoute" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="client" Relationship="Self.FK_client_person" FromRole="person" ToRole="client" />
+    <NavigationProperty Name="transporteur" Relationship="naftall1Model1.FK_transporteur_person" FromRole="person" ToRole="transporteur" />
+    <NavigationProperty Name="chaufeur" Relationship="naftall1Model1.FK_chaufeur_person" FromRole="person" ToRole="chaufeur" />
+    <NavigationProperty Name="utilisateur" Relationship="naftall1Model1.FK_utilisateur_person" FromRole="person" ToRole="utilisateur" />
+  </EntityType>
+  <EntityType Name="produit">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prixu_unit" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="emb" Type="Int32" />
+    <Property Name="qnt" Type="Int32" />
+    <NavigationProperty Name="commandes" Relationship="Self.FK_commandes_produit" FromRole="produit" ToRole="commandes" />
+    <NavigationProperty Name="la_charge" Relationship="naftall1Model1.FK_la_charge_produit" FromRole="produit" ToRole="la_charge" />
+  </EntityType>
+  <Association Name="FK_client_person">
+    <End Role="person" Type="Self.person" Multiplicity="0..1" />
+    <End Role="client" Type="Self.client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="client">
+        <PropertyRef Name="person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_commandes_client">
+    <End Role="client" Type="Self.client" Multiplicity="1" />
+    <End Role="commandes" Type="Self.commandes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="commandes">
+        <PropertyRef Name="client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_commandes_produit">
+    <End Role="produit" Type="Self.produit" Multiplicity="1" />
+    <End Role="commandes" Type="Self.commandes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produit">
+        <PropertyRef Name="code" />
+      </Principal>
+      <Dependent Role="commandes">
+        <PropertyRef Name="produit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="naftall1Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="client" EntityType="Self.client" />
+    <EntitySet Name="commandes" EntityType="Self.commandes" />
+    <EntitySet Name="person" EntityType="Self.person" />
+    <EntitySet Name="produit" EntityType="Self.produit" />
+    <AssociationSet Name="FK_client_person" Association="Self.FK_client_person">
+      <End Role="person" EntitySet="person" />
+      <End Role="client" EntitySet="client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_commandes_client" Association="Self.FK_commandes_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="commandes" EntitySet="commandes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_commandes_produit" Association="Self.FK_commandes_produit">
+      <End Role="produit" EntitySet="produit" />
+      <End Role="commandes" EntitySet="commandes" />
+    </AssociationSet>
+    <EntitySet Name="transporteur" EntityType="naftall1Model1.transporteur" />
+    <AssociationSet Name="FK_transporteur_person" Association="naftall1Model1.FK_transporteur_person">
+      <End Role="person" EntitySet="person" />
+      <End Role="transporteur" EntitySet="transporteur" />
+    </AssociationSet>
+    <EntitySet Name="bon_enlev" EntityType="naftall1Model1.bon_enlev" />
+    <EntitySet Name="la_charge" EntityType="naftall1Model1.la_charge" />
+    <AssociationSet Name="FK_la_charge_rotation" Association="naftall1Model1.FK_la_charge_rotation">
+      <End Role="bon_enlev" EntitySet="bon_enlev" />
+      <End Role="la_charge" EntitySet="la_charge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_la_charge_produit" Association="naftall1Model1.FK_la_charge_produit">
+      <End Role="produit" EntitySet="produit" />
+      <End Role="la_charge" EntitySet="la_charge" />
+    </AssociationSet>
+    <EntitySet Name="vehicule" EntityType="naftall1Model1.vehicule" />
+    <AssociationSet Name="FK_rotation_tracteur" Association="naftall1Model1.FK_rotation_tracteur">
+      <End Role="vehicule" EntitySet="vehicule" />
+      <End Role="bon_enlev" EntitySet="bon_enlev" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tracteur_pro_tac_citerne" Association="naftall1Model1.FK_tracteur_pro_tac_citerne">
+      <End Role="transporteur" EntitySet="transporteur" />
+      <End Role="vehicule" EntitySet="vehicule" />
+    </AssociationSet>
+    <EntitySet Name="chaufeur" EntityType="naftall1Model1.chaufeur" />
+    <AssociationSet Name="FK_rotation_chaufeur" Association="naftall1Model1.FK_rotation_chaufeur">
+      <End Role="chaufeur" EntitySet="chaufeur" />
+      <End Role="bon_enlev" EntitySet="bon_enlev" />
+    </AssociationSet>
+    <AssociationSet Name="FK_chaufeur_person" Association="naftall1Model1.FK_chaufeur_person">
+      <End Role="person" EntitySet="person" />
+      <End Role="chaufeur" EntitySet="chaufeur" />
+    </AssociationSet>
+    <AssociationSet Name="FK_chaufeur_pro_tac_citerne" Association="naftall1Model1.FK_chaufeur_pro_tac_citerne">
+      <End Role="transporteur" EntitySet="transporteur" />
+      <End Role="chaufeur" EntitySet="chaufeur" />
+    </AssociationSet>
+    <AssociationSet Name="FK_rotation_citterne" Association="naftall1Model1.FK_rotation_citterne">
+      <End Role="vehicule" EntitySet="vehicule" />
+      <End Role="bon_enlev" EntitySet="bon_enlev" />
+    </AssociationSet>
+    <EntitySet Name="bon_liv" EntityType="naftall1Model1.bon_liv" />
+    <AssociationSet Name="FK_bon_liv_bon_enlev" Association="naftall1Model1.FK_bon_liv_bon_enlev">
+      <End Role="bon_enlev" EntitySet="bon_enlev" />
+      <End Role="bon_liv" EntitySet="bon_liv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_commandes_bon_liv" Association="naftall1Model1.FK_commandes_bon_liv">
+      <End Role="bon_liv" EntitySet="bon_liv" />
+      <End Role="commandes" EntitySet="commandes" />
+    </AssociationSet>
+    <EntitySet Name="utilisateur" EntityType="naftall1Model1.utilisateur" />
+    <AssociationSet Name="FK_utilisateur_person" Association="naftall1Model1.FK_utilisateur_person">
+      <End Role="person" EntitySet="person" />
+      <End Role="utilisateur" EntitySet="utilisateur" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="transporteur">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="person" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="person1" Relationship="naftall1Model1.FK_transporteur_person" FromRole="transporteur" ToRole="person" />
+    <NavigationProperty Name="vehicule" Relationship="naftall1Model1.FK_tracteur_pro_tac_citerne" FromRole="transporteur" ToRole="vehicule" />
+    <NavigationProperty Name="chaufeur" Relationship="naftall1Model1.FK_chaufeur_pro_tac_citerne" FromRole="transporteur" ToRole="chaufeur" />
+  </EntityType>
+  <Association Name="FK_transporteur_person">
+    <End Type="naftall1Model1.person" Role="person" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="naftall1Model1.transporteur" Role="transporteur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="transporteur">
+        <PropertyRef Name="person" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="bon_enlev">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="chaufeur" Type="Int32" Nullable="false" />
+    <Property Name="citerne" Type="Int32" Nullable="false" />
+    <Property Name="tracteur" Type="Int32" Nullable="false" />
+    <Property Name="mode" Type="Byte" Nullable="false" />
+    <Property Name="programme" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="la_charge" Relationship="naftall1Model1.FK_la_charge_rotation" FromRole="bon_enlev" ToRole="la_charge" />
+    <NavigationProperty Name="vehicule" Relationship="naftall1Model1.FK_rotation_tracteur" FromRole="bon_enlev" ToRole="vehicule" />
+    <NavigationProperty Name="chaufeur1" Relationship="naftall1Model1.FK_rotation_chaufeur" FromRole="bon_enlev" ToRole="chaufeur" />
+    <NavigationProperty Name="vehicule1" Relationship="naftall1Model1.FK_rotation_citterne" FromRole="bon_enlev" ToRole="vehicule" />
+    <NavigationProperty Name="bon_liv" Relationship="naftall1Model1.FK_bon_liv_bon_enlev" FromRole="bon_enlev" ToRole="bon_liv" />
+    <Property Name="status" Type="Byte" Nullable="false" />
+    <Property Name="etable" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="la_charge">
+    <Key>
+      <PropertyRef Name="cmp" />
+      <PropertyRef Name="rotation" />
+    </Key>
+    <Property Name="cmp" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="rotation" Type="Int32" Nullable="false" />
+    <Property Name="produit" Type="Int32" Nullable="false" />
+    <Property Name="qnt" Type="Int32" Nullable="false" />
+    <Property Name="emb" Type="Int32" />
+    <NavigationProperty Name="bon_enlev" Relationship="naftall1Model1.FK_la_charge_rotation" FromRole="la_charge" ToRole="bon_enlev" />
+    <NavigationProperty Name="produit1" Relationship="naftall1Model1.FK_la_charge_produit" FromRole="la_charge" ToRole="produit" />
+  </EntityType>
+  <Association Name="FK_la_charge_rotation">
+    <End Type="naftall1Model1.bon_enlev" Role="bon_enlev" Multiplicity="1" />
+    <End Type="naftall1Model1.la_charge" Role="la_charge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bon_enlev">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="la_charge">
+        <PropertyRef Name="rotation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_la_charge_produit">
+    <End Type="naftall1Model1.produit" Role="produit" Multiplicity="1" />
+    <End Type="naftall1Model1.la_charge" Role="la_charge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produit">
+        <PropertyRef Name="code" />
+      </Principal>
+      <Dependent Role="la_charge">
+        <PropertyRef Name="produit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="vehicule">
+    <Key>
+      <PropertyRef Name="veh_num" />
+    </Key>
+    <Property Name="veh_num" Type="Int32" annotation:StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="transporteur" Type="Int32" />
+    <Property Name="privee" Type="Byte" Nullable="false" />
+    <Property Name="disponible" Type="Byte" Nullable="false" DefaultValue="1" />
+    <Property Name="matricule" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="type_vih" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="bon_enlev" Relationship="naftall1Model1.FK_rotation_tracteur" FromRole="vehicule" ToRole="bon_enlev" />
+    <NavigationProperty Name="transporteur1" Relationship="naftall1Model1.FK_tracteur_pro_tac_citerne" FromRole="vehicule" ToRole="transporteur" />
+    <NavigationProperty Name="bon_enlev1" Relationship="naftall1Model1.FK_rotation_citterne" FromRole="vehicule" ToRole="bon_enlev" />
+  </EntityType>
+  <Association Name="FK_rotation_tracteur">
+    <End Type="naftall1Model1.vehicule" Role="vehicule" Multiplicity="1" />
+    <End Type="naftall1Model1.bon_enlev" Role="bon_enlev" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehicule">
+        <PropertyRef Name="veh_num" />
+      </Principal>
+      <Dependent Role="bon_enlev">
+        <PropertyRef Name="tracteur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tracteur_pro_tac_citerne">
+    <End Type="naftall1Model1.transporteur" Role="transporteur" Multiplicity="0..1" />
+    <End Type="naftall1Model1.vehicule" Role="vehicule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transporteur">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="vehicule">
+        <PropertyRef Name="transporteur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="chaufeur">
+    <Key>
+      <PropertyRef Name="chauf_num" />
+    </Key>
+    <Property Name="chauf_num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="transporteur" Type="Int32" />
+    <Property Name="person" Type="Int32" Nullable="false" />
+    <Property Name="permis" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="permis_debut" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="disponible" Type="Byte" Nullable="false" DefaultValue="1" />
+    <NavigationProperty Name="bon_enlev" Relationship="naftall1Model1.FK_rotation_chaufeur" FromRole="chaufeur" ToRole="bon_enlev" />
+    <NavigationProperty Name="person1" Relationship="naftall1Model1.FK_chaufeur_person" FromRole="chaufeur" ToRole="person" />
+    <NavigationProperty Name="transporteur1" Relationship="naftall1Model1.FK_chaufeur_pro_tac_citerne" FromRole="chaufeur" ToRole="transporteur" />
+  </EntityType>
+  <Association Name="FK_rotation_chaufeur">
+    <End Type="naftall1Model1.chaufeur" Role="chaufeur" Multiplicity="1" />
+    <End Type="naftall1Model1.bon_enlev" Role="bon_enlev" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="chaufeur">
+        <PropertyRef Name="chauf_num" />
+      </Principal>
+      <Dependent Role="bon_enlev">
+        <PropertyRef Name="chaufeur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_chaufeur_person">
+    <End Type="naftall1Model1.person" Role="person" Multiplicity="1" />
+    <End Type="naftall1Model1.chaufeur" Role="chaufeur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="chaufeur">
+        <PropertyRef Name="person" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_chaufeur_pro_tac_citerne">
+    <End Type="naftall1Model1.transporteur" Role="transporteur" Multiplicity="0..1" />
+    <End Type="naftall1Model1.chaufeur" Role="chaufeur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transporteur">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="chaufeur">
+        <PropertyRef Name="transporteur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_rotation_citterne">
+    <End Type="naftall1Model1.vehicule" Role="vehicule" Multiplicity="1" />
+    <End Type="naftall1Model1.bon_enlev" Role="bon_enlev" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehicule">
+        <PropertyRef Name="veh_num" />
+      </Principal>
+      <Dependent Role="bon_enlev">
+        <PropertyRef Name="citerne" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="bon_liv">
+    <Key>
+      <PropertyRef Name="num_BonLiv" />
+    </Key>
+    <Property Name="num_BonLiv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="montant_total" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="date_ajout" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="status" Type="Byte" Nullable="false" />
+    <Property Name="date_liv" Type="DateTime" Precision="3" />
+    <Property Name="num_piece" Type="Int32" />
+    <Property Name="date_Payement" Type="DateTime" Precision="3" />
+    <Property Name="payment_mode" Type="Byte" Nullable="false" />
+    <Property Name="bon_enlev" Type="Int32" />
+    <NavigationProperty Name="bon_enlev1" Relationship="naftall1Model1.FK_bon_liv_bon_enlev" FromRole="bon_liv" ToRole="bon_enlev" />
+    <NavigationProperty Name="commandes" Relationship="naftall1Model1.FK_commandes_bon_liv" FromRole="bon_liv" ToRole="commandes" />
+  </EntityType>
+  <Association Name="FK_bon_liv_bon_enlev">
+    <End Type="naftall1Model1.bon_enlev" Role="bon_enlev" Multiplicity="0..1" />
+    <End Type="naftall1Model1.bon_liv" Role="bon_liv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bon_enlev">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bon_liv">
+        <PropertyRef Name="bon_enlev" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_commandes_bon_liv">
+    <End Type="naftall1Model1.bon_liv" Role="bon_liv" Multiplicity="1" />
+    <End Type="naftall1Model1.commandes" Role="commandes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bon_liv">
+        <PropertyRef Name="num_BonLiv" />
+      </Principal>
+      <Dependent Role="commandes">
+        <PropertyRef Name="bon_liv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="utilisateur">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="person" Type="Int32" Nullable="false" />
+    <Property Name="mot_pass" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="role" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="person1" Relationship="naftall1Model1.FK_utilisateur_person" FromRole="utilisateur" ToRole="person" />
+    <Property Name="user_name" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_utilisateur_person">
+    <End Type="naftall1Model1.person" Role="person" Multiplicity="1" />
+    <End Type="naftall1Model1.utilisateur" Role="utilisateur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="utilisateur">
+        <PropertyRef Name="person" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

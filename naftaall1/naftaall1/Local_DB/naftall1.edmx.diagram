@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="71a08bddacea4cb8a56e31d52c523f72" Name="Diagram1">
+        <EntityTypeShape EntityType="naftall1Model1.client" Width="1.5" PointX="2.875" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="naftall1Model1.commandes" Width="1.5" PointX="6.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="naftall1Model1.person" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="naftall1Model1.produit" Width="1.5" PointX="9.125" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="naftall1Model1.FK_client_person" ManuallyRouted="false" />
+        <AssociationConnector Association="naftall1Model1.FK_commandes_client" ManuallyRouted="false" />
+        <AssociationConnector Association="naftall1Model1.FK_commandes_produit" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="naftall1Model1.transporteur" Width="1.5" PointX="4.5" PointY="4" />
+        <AssociationConnector Association="naftall1Model1.FK_transporteur_person" />
+        <EntityTypeShape EntityType="naftall1Model1.bon_enlev" Width="1.5" PointX="11.375" PointY="5.75" />
+        <EntityTypeShape EntityType="naftall1Model1.la_charge" Width="1.5" PointX="13.625" PointY="6.125" />
+        <AssociationConnector Association="naftall1Model1.FK_la_charge_rotation" />
+        <AssociationConnector Association="naftall1Model1.FK_la_charge_produit" />
+        <EntityTypeShape EntityType="naftall1Model1.vehicule" Width="1.5" PointX="7" PointY="6" />
+        <AssociationConnector Association="naftall1Model1.FK_rotation_tracteur" />
+        <AssociationConnector Association="naftall1Model1.FK_tracteur_pro_tac_citerne" />
+        <EntityTypeShape EntityType="naftall1Model1.chaufeur" Width="1.5" PointX="3.375" PointY="6.625" />
+        <AssociationConnector Association="naftall1Model1.FK_rotation_chaufeur" />
+        <AssociationConnector Association="naftall1Model1.FK_chaufeur_person" />
+        <AssociationConnector Association="naftall1Model1.FK_chaufeur_pro_tac_citerne" />
+        <AssociationConnector Association="naftall1Model1.FK_rotation_citterne" />
+        <EntityTypeShape EntityType="naftall1Model1.bon_liv" Width="1.5" PointX="11.5" PointY="1.75" />
+        <AssociationConnector Association="naftall1Model1.FK_bon_liv_bon_enlev" />
+        <AssociationConnector Association="naftall1Model1.FK_commandes_bon_liv" />
+        <EntityTypeShape EntityType="naftall1Model1.utilisateur" Width="1.5" PointX="3" PointY="10.25" />
+        <AssociationConnector Association="naftall1Model1.FK_utilisateur_person" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
